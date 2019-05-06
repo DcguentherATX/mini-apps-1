@@ -1,2 +1,39 @@
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tic Tac Toe</title>
+    <style>
+      td {
+        border: solid 1px black;
+        height: 100px;
+        width: 100px;
+        text-align: center
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <table>
+        <tr>
+            <td class="square" id="1" onclick="updateSquareValue()"></td>
+            <td class="square" id="2" onclick="updateSquareValue()"></td>
+            <td class="square" id="3" onclick="updateSquareValue()"></td>
+        </tr>
+        <tr>
+            <td class="square" id="4" onclick="updateSquareValue()"></td>
+            <td class="square" id="5" onclick="updateSquareValue()"></td>
+            <td class="square" id="6" onclick="updateSquareValue()"></td>
+        </tr>
+        <tr>
+            <td class="square" id="7" onclick="updateSquareValue()"></td>
+            <td class="square" id="8" onclick="updateSquareValue()"></td>
+            <td class="square" id="9" onclick="updateSquareValue()"></td>
+        </tr>
+    </table>
+    <h3>Winner: </h3>
+    <button>Reset</button>
+    <script src='app.js'></script>
+  </body>
+</html>
 
