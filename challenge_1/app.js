@@ -15,9 +15,23 @@ console.log(board);
 //     console.log(event.target);
 // })
 
+let counter = 1;
+
 updateSquareValue = function() {
     let box = this.event.target.id;
-    document.getElementById(box).innerHTML = "X"
+    if(counter % 2 === 1) {
+      document.getElementById(box).innerHTML = "X";
+      counter++;
+    } else {
+      document.getElementById(box).innerHTML = "O";
+      counter++;
+    }
+};
+
+reset = function() {
+  for (var i = 0; i < board.length; i++) {
+      board[i].innerHTML = '';
+  }
 }
 
 console.log('app is connected');
