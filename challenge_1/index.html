@@ -4,35 +4,85 @@
     <meta charset="utf-8">
     <title>Tic Tac Toe</title>
     <style>
+      html {
+        background: no-repeat linear-gradient(rgb(255,244,191), rgb(104,188,235));
+        background-size: cover
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        text-align: center
+      }
       td {
         border: solid 1px black;
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
         text-align: center;
-        font-size: 50px
+        font-size: 75px
+      }
+      button {
+        margin-bottom: 200px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 25px;
+        color: white;
+        background-color: rgb(71,108,235);
+        border: solid 1px black
+      }
+      #victory {
+        font-size: 40px;
+      }
+      h1 {
+        font-size: 50px;
+      }
+      .square {
+        color: rgb(71,108,235);
+      }
+      h3 {
+        font-size: 25px;
+      }
+      table {
+        margin-top: 20px;
+      }
+      .score {
+        float: inline-start;
+        border: solid 1px black;
+        text-align: center;
+        border-radius: 10px;
+        background-color: rgb(71,108,235);
+        color: white;
       }
     </style>
   </head>
-  <body>
+  <body class="container">
+    <div class="wrapper">
     <h1>Tic Tac Toe</h1>
+    <div>
+    <div class="score">
+      <h3 id="prevwinner">Previous Winner: </h3>
+      <h3 id="xwins">X Wins: </h3>
+      <h3 id="owins">O Wins: </h3>
+    </div>
     <table>
-        <tr>
+        <tr id="r1">
             <td class="square" id="1" onclick="updateSquareValue()"></td>
             <td class="square" id="2" onclick="updateSquareValue()"></td>
             <td class="square" id="3" onclick="updateSquareValue()"></td>
         </tr>
-        <tr>
+        <tr id="r2">
             <td class="square" id="4" onclick="updateSquareValue()"></td>
             <td class="square" id="5" onclick="updateSquareValue()"></td>
             <td class="square" id="6" onclick="updateSquareValue()"></td>
         </tr>
-        <tr>
+        <tr id="r3">
             <td class="square" id="7" onclick="updateSquareValue()"></td>
             <td class="square" id="8" onclick="updateSquareValue()"></td>
             <td class="square" id="9" onclick="updateSquareValue()"></td>
         </tr>
+      </div>
     </table>
-    <h3>Winner: </h3>
+    <h3 id="victory"></h3>
     <button onclick="reset()">Reset</button>
     <script src='app.js'></script>
   </body>
