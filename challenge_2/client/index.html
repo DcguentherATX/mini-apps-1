@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSV Report Generator</title>
-    <style>
-       textarea {
-           height: 400px;
-           width: 400px
-       }
-    </style>
+    <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
     <h1>CSV Report Generator</h1>
     <form method="POST" action="/">
-        <label>Input JSON data here: </label>
-        <textarea></textarea>
+        <textarea class="textarea" name="json-data"></textarea>
         <button>Submit</button>
     </form>
-    
+    <script src="app.js"></script>
 </body>
 </html>
 
