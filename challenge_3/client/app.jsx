@@ -3,6 +3,7 @@ class App extends React.Component {
         super(props);
 
         this.state = {
+            count: 0,
             name: '',
             email: '',
             password: '',
@@ -11,6 +12,7 @@ class App extends React.Component {
             city: '',
             state: '',
             zip: '',
+            phone: '',
             credit: '',
             expiration: '',
             cvv: '',
@@ -19,6 +21,7 @@ class App extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.next = this.next.bind(this);
         //bind functions here
     }
     // other functions here
@@ -32,21 +35,70 @@ class App extends React.Component {
 
     }
 
+    next() {
+        if (this.state.count === 3) {
+            Axios.post(){
+                console.log('post request');
+            }
+
+            this.setState({
+                count: 0,
+                name: '',
+                email: '',
+                password: '',
+                addressLineOne: '',
+                addressLineTwo: '',
+                city: '',
+                state: '',
+                zip: '',
+                phone: '',
+                credit: '',
+                expiration: '',
+                cvv: '',
+                billingZip: ''
+            })
+        } else {
+            let next = this.state.count + 1;
+            this.setState({
+                count: next
+            });
+        }
+    }
+
     render() {
-        return (
-            <div>
-                <h1>Grocery Cart App</h1>
-                <button onClick={this.handleClick}>Checkout</button>
-                <FormOne handleChange={this.handleChange} />
-                <FormTwo handleChange={this.handleChange} />
-                <FormThree handleChange={this.handleChange} />
-            </div>
-        );
+        if (this.state.count === 0) {
+            return (
+                <div>
+                    <h1>Grocery Cart App</h1>
+                    <button onClick={this.next}>Checkout</button>
+                </div>
+            )
+        } else if (this.state.count === 1) {
+            return (
+                <div>
+                    <h1>Grocery Cart App</h1>
+                    <FormOne handleChange={this.handleChange} next={this.next} />
+                </div>
+            );
+        } else if (this.state.count === 2) {
+            return (
+                <div>
+                    <h1>Grocery Cart App</h1>
+                    <FormTwo handleChange={this.handleChange} next={this.next} />
+                </div>
+            );
+        } else if (this.state.count === 3) {
+            return (
+                <div>
+                    <h1>Grocery Cart App</h1>
+                    <FormThree handleChange={this.handleChange} next={this.next} />
+                </div>
+            );
+        }
     }
 };
 
 const FormOne = function (props) {
-    console.log(props);
     return (
         <form id="formOne">
             <label>
@@ -61,7 +113,7 @@ const FormOne = function (props) {
                 Password:
                 <input type="text" name="password" onChange={(e) => props.handleChange(e)}></input>
             </label>
-            <button>Next</button>
+            <button onClick={props.next}>Next</button>
         </form>
     );
 }
@@ -93,7 +145,7 @@ const FormTwo = function (props) {
                 Phone Number:
                 <input type="text" name="phone" onChange={(e) => props.handleChange(e)}></input>
             </label>
-            <button>Next</button>
+            <button onClick={props.next}>Next</button>
         </form>
     )
 }
@@ -117,7 +169,7 @@ const FormThree = function (props) {
                 Billing Zip:
                 <input type="text" name="billingZip" onChange={(e) => props.handleChange(e)}></input>
             </label>
-            <button>Next</button>
+            <button onClick={props.next}>Purchase</button>
         </form>
     )
 }
