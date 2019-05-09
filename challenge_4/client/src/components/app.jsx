@@ -1,4 +1,5 @@
 import React from 'react';
+import Table from './Table.jsx';
 
 class App extends React.Component {
     constructor(props) {
@@ -10,23 +11,27 @@ class App extends React.Component {
         //bind functions here
     }
     // define functions here
-
-    render() {
-        return (
-            <div>
-                <h1>Connect Four</h1>
-                <label>Player One: </label>
-                <input type="text" name="playerOneName"></input>
-                <label>Player Two: </label>
-                <input type="text" name="playerTwoName"></input>
-            </div>
-            <div>
-                <Square x={0} y={0} />
-                <Square x={1} y={0} />
-                <Square x={2} y={0} />
-            </div>
-        )
+    let row = [];
+makeRows() {
+    for (var i = 0; i < 6; i++) {
+        row.push(<div><Row row={i} /></div>)
     }
+};
+
+render() {
+    return (
+        <div className="app">
+            <h1>Connect Four</h1>
+            <label>Player One: </label>
+            <input type="text" name="playerOneName"></input>
+            <label>Player Two: </label>
+            <input type="text" name="playerTwoName" style={{ marginBottom: '5px' }}></input>
+            <div>
+                <Table makeRows={makeRows} />
+            </div>
+        </div>
+    )
+}
 }
 
 export default App; 
